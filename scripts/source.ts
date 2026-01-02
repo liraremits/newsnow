@@ -10,7 +10,7 @@ try {
   const pinyinMap = Object.fromEntries(Object.entries(sources)
     .filter(([, v]) => !v.redirect)
     .map(([k, v]) => {
-      return [k, pinyin(v.title ? `${v.name}-${v.title}` : v.name).join("")]
+      return [k, pinyin(v.title ? `${v.name}-${v.title}-${v.redirect}` : v.name).join("")]
     }))
 
   writeFileSync(join(projectDir, "./shared/pinyin.json"), JSON.stringify(pinyinMap, undefined, 2))
